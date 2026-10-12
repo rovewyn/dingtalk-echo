@@ -8,6 +8,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.tmp/
+.uv-cache/
 node_modules/
 work/
 outputs/

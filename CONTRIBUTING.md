@@ -2,7 +2,16 @@
 
 ## Development
 
-This repository is initialized for policy review. Bot implementation and runtime/dependency selection are pending. Read AGENTS.md and docs/ before changing code. Document reproducible setup and validation commands when implementation begins.
+Use Python 3.13.16 (pinned in .python-version) and uv 0.13.0. Dependencies are resolved in uv.lock, including dingtalk-stream 0.24.3. Read AGENTS.md and docs/ before changing code.
+
+```sh
+uv sync --locked
+uv run --locked python -m unittest discover -s tests -v
+uv run --locked python -m compileall -q echo_bot.py tests
+git diff --check
+```
+
+The tests use synthetic data and include real HTTP and WebSocket servers bound only to 127.0.0.1. They require no DingTalk credentials or external service connection. Runtime checks and commands belong in docs/; keep the root README brief.
 
 ## Commit checks
 
