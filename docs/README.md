@@ -1,6 +1,6 @@
 # Documentation
 
-The bot receives DingTalk Stream messages and echoes the SDK-delivered text into the same conversation.
+The TypeScript bot receives DingTalk Stream messages and echoes platform-delivered text into the same conversation.
 
 - [Setup and operation](setup.md): dependencies, private configuration, startup, and local validation.
 - [DingTalk console configuration](dingtalk.md): create the application robot and test direct chat.
