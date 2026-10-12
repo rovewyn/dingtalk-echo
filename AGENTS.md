@@ -4,9 +4,9 @@
 
 Build a minimal DingTalk echo bot. The first milestone is a direct chat: receive a text message and reply with the same text through an enterprise internal application robot using Stream mode. Group chat support, when implemented, handles messages addressed to the robot.
 
-Keep the first version small. Do not add an LLM, database, conversation memory, Web UI, or additional platform integrations unless requested. Python and the official DingTalk Stream SDK are the proposed starting point; verify current official SDK interfaces before implementation and document the selected runtime and dependency versions.
+Keep the first version small. Do not add an LLM, database, conversation memory, Web UI, or additional platform integrations unless requested. Use TypeScript with the Node.js, npm, ESM, strict compiler settings, and built-in test runner used by Dewbow. Keep this repository a single package. Verify the official DingTalk Stream protocol and SDK interfaces before integration changes, and document the selected runtime and dependency versions.
 
-Separate platform message handling from the echo operation only where it makes the code easier to understand. Preserve the SDK-delivered text, including Unicode and line breaks. Define non-text handling explicitly. Acknowledge callbacks according to the SDK contract, handle reply failures, and consider duplicate callback delivery without promising exactly-once delivery unless verified.
+Separate platform message handling from the echo operation only where it makes the code easier to understand. Preserve platform-delivered text, including Unicode and line breaks. Define non-text handling explicitly. Acknowledge callbacks according to the official Stream contract, handle reply failures, and consider duplicate callback delivery without promising exactly-once delivery unless verified.
 
 Do not log message contents, application secrets, access tokens, or session webhook URLs by default. Use synthetic messages for automated checks. Live DingTalk testing uses the user's authorized application and conversation; record the outcome without publishing private payloads.
 
@@ -35,6 +35,8 @@ Run `git diff --check` when reviewing changes and `git diff --cached --check` be
 Match the surrounding code and the conventions of each language. Use descriptive names, keep changes focused, and reuse existing abstractions before adding new ones.
 
 Use English for repository documentation, code comments, and other written project artifacts.
+
+Use camelCase for project-owned TypeScript variables, functions, methods, properties, and configuration keys. Preserve DingTalk-defined field names at integration boundaries. Use .js suffixes in relative ESM imports and keep @types/node on the selected Node.js runtime's major version.
 
 Preserve public interfaces and established behavior unless the task requires a change. Explain non-obvious constraints, lifecycle assumptions, and tradeoffs where they affect maintenance.
 

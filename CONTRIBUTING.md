@@ -2,16 +2,17 @@
 
 ## Development
 
-Use Python 3.13.16 (pinned in .python-version) and uv 0.13.0. Dependencies are resolved in uv.lock, including dingtalk-stream 0.24.3. Read AGENTS.md and docs/ before changing code.
+Use Node.js 24.21.0 (pinned in .node-version) and npm 12.2.0 (pinned in packageManager), following Dewbow's toolchain. Use the committed package-lock.json and TypeScript 7.0.2 with @types/node 24.19.2. Read AGENTS.md and docs/ before changing code.
 
 ```sh
-uv sync --locked
-uv run --locked python -m unittest discover -s tests -v
-uv run --locked python -m compileall -q echo_bot.py tests
+npm ci
+npm run build
+npm run typecheck
+npm test
 git diff --check
 ```
 
-The tests use synthetic data and include real HTTP and WebSocket servers bound only to 127.0.0.1. They require no DingTalk credentials or external service connection. Runtime checks and commands belong in docs/; keep the root README brief.
+The tests use Node's built-in test runner and synthetic data, with real HTTP and WebSocket servers bound only to 127.0.0.1. They require no DingTalk credentials or external service connection. npm 12 blocks unapproved dependency installation scripts; allowScripts is empty because none are needed. Do not allow scripts without reviewing a concrete requirement. Runtime checks and commands belong in docs/; keep the root README brief.
 
 ## Commit checks
 

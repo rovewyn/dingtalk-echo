@@ -11,6 +11,8 @@ __pycache__/
 .tmp/
 .uv-cache/
 node_modules/
+dist/
+.npm-cache/
 work/
 outputs/
 logs/
